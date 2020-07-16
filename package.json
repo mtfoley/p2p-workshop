@@ -7,6 +7,7 @@
     "build": "./build.js"
   },
   "dependencies": {
+    "fully-connected-topology": "^1.1.1",
     "lookup-multicast-dns": "^1.0.3",
     "marked": "^0.3.5",
     "register-multicast-dns": "^1.1.0",
