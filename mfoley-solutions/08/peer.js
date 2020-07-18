@@ -2,8 +2,8 @@ require('lookup-multicast-dns/global')
 const register = require('register-multicast-dns')
 const topology = require('fully-connected-topology')
 const hashToPort = require('hash-to-port')
-const usage = 'Usage: node peer {my-username} {other-username}\n'
-            + 'Example: node peer matt laura'
+const usage = 'Usage: node peer {my-username} {other-username-1} ..{other-username-n}\n'
+            + 'Example: node peer matt laura chris andy'
 const argv = process.argv.slice(2)
 const getAddress = function(username){
   return `${username}.local:${hashToPort(username)}`
@@ -19,9 +19,8 @@ let streams = {}
 const nickname = argv[0]
 const me = getAddress(nickname)
 register(nickname+'.local')
-const peers = [getAddress(argv[1])]
-const top = topology(me,peers)
-console.log(me,peers)
+const peers = argv.slice(1)
+const top = topology(getAddress(nickname),peers.map(getAddress))
 process.stdin.on('data', function (data) {
   seq++
   const encoded = encode(data)
