@@ -7,6 +7,7 @@
     "build": "./build.js"
   },
   "dependencies": {
+    "duplex-json-stream": "^1.0.1",
     "fully-connected-topology": "^1.1.1",
     "hash-to-port": "^1.1.0",
     "level": "^6.0.1",
